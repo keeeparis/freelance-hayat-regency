@@ -1,0 +1,104 @@
+@import '@styles/variables';
+@import '@styles/mixins';
+
+.header {
+  z-index: 1;
+  position: relative;
+
+  display: flex;
+  gap: 16px;
+  padding: 24px 20px;
+  align-items: center;
+  
+  @include for-tablet-portrait-up {
+    padding: 24px 48px;
+  }
+
+  &_side {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex: 1;
+    
+    @include for-tablet-portrait-up {
+      gap: 20px;
+    }
+
+    &_right {
+      justify-content: end;
+
+      > span {
+        font-size: 13px;
+        line-height: 184%;
+        display: none;
+
+        @include for-tablet-portrait-up {
+          display: block;
+          @include responsive-font-size(13)
+        }
+      }
+    }
+
+    
+  }
+
+  &_rounded {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  &_choose_flat {
+    display: none;
+  
+    @include for-tablet-portrait-up {
+      display: block;
+    }
+  }
+
+  &_logo {
+    display: none;
+  
+    @include for-tablet-portrait-up {
+      display: block;
+    }
+  }
+
+  &_3d {
+    font-size: 11px !important;
+    color: $gold-5 !important;
+    line-height: 100% !important;
+  }
+
+  &_phone_number {
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: .32px;
+    
+    @include for-phone-only {
+      display: none !important;
+    }
+
+    @include for-tablet-portrait-up {
+      @include responsive-font-size(16)
+    }  
+  }
+
+  &_apartments {
+    @include for-tablet-portrait-up {
+      display: none !important;
+    }
+  }
+
+  &_mobile_book_phone_call {
+    @include for-tablet-portrait-up {
+      display: none !important;
+    }
+  }
+
+  &_desktop_book_phone_call {
+    @include for-phone-only {
+      display: none !important;
+    }
+  }
+}
+

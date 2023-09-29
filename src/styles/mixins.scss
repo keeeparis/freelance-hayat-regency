@@ -1,0 +1,40 @@
+@import '@styles/variables.scss';
+
+@mixin for-phone-only {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait-up {
+  @media screen and (min-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin responsive-font-size($size) {
+  font-size: calc(calc($size/1440) * 100) + vw;
+}
+
+
+// @mixin for-tablet-landscape-up {
+//   @media screen and (min-width: $tablet) {
+//     @content;
+//   }
+// }
+
+// @mixin for-desktop-up {
+//   @media screen and (min-width: $desktop) {
+//     @content;
+//   }
+// }
+
+// @mixin max-width {
+//   max-width: 970px;
+//   margin-inline: auto;
+//   padding-inline: 1.25em;
+
+//   @include for-tablet-portrait-up {
+//     padding-inline: 2.5em;
+//   }
+// }

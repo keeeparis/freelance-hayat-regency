@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import { getImage } from 'astro/assets';
+
+import Layout from '../layouts/Layout.astro';
+import StartScreen from '@screens/StartScreen';
+import AboutScreen from '@screens/AboutScreen';
+
+import BgImage from '@assets/start-screen/bg.jpeg';
+import LogoSmall from '@assets/start-screen/logo-small.png';
+import LogoMain from '@assets/start-screen/logo-main.png';
+
+// @ts-ignore
+const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quality: 'mid' });
+
+---
+
+<Layout>
+  <StartScreen client:load>
+    <!-- <Image src={optimizedBackground.src} slot="background" alt="background iamge" />   -->
+    <!-- <img src={optimizedBackground2x.src} slot="background" alt="background image" srcset={`
+    ${optimizedBackground1x.src} 400w, 
+    ${optimizedBackground2x.src} 800w, 
+    ${optimizedBackground3x.src} 1200w`}> -->
+    <img src={optimizedBackground.src} slot="background" alt="background image">
+    <!-- <Image src={LogoMain} slot="logoMain" alt="Logo main" /> -->
+    <Image src={LogoSmall} slot="logoSmall" alt="Logo small" quality="max" />
+  </StartScreen>
+
+  <AboutScreen>
+  </AboutScreen>
+
+
+</Layout>
+
+<style>
+</style>

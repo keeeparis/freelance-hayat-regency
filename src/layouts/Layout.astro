@@ -1,0 +1,33 @@
+---
+import { getImage } from 'astro:assets';
+
+import '../styles/global.scss';
+
+import BgImage from '@assets/start-screen/bg.jpeg';
+
+// const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quality: 'mid'  });
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>Title</title>
+
+		<link rel="preload" href="/fonts/Romanovsky-Regular.woff" as="font" type="font/woff" crossorigin>
+		<link rel="preload" href="/fonts/CeraPro-Regular.woff" as="font" type="font/woff" crossorigin>
+		<link rel="preload" href="/fonts/CeraPro-Medium.woff" as="font" type="font/woff" crossorigin>
+
+		<!-- <link rel="preload" imagesrcset={optimizedBackground.src} as="image"> -->
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	
+</style>
