@@ -5,11 +5,18 @@ import { getImage } from 'astro/assets';
 import Layout from '../layouts/Layout.astro';
 import StartScreen from '@screens/StartScreen';
 import AboutScreen from '@screens/AboutScreen';
-
 import BgImage from '@assets/start-screen/bg.jpeg';
 import LogoSmall from '@assets/start-screen/logo-small.png';
-import LogoMain from '@assets/start-screen/logo-main.png';
 import SidebarImg from '@assets/sidebar/img.png';
+
+import ArchTop from '@assets/arch/pic-top.png';
+import ArchLeft from '@assets/arch/pic-left.png';
+import ArchMainCenter from '@assets/arch/pic-main-center.png';
+import ArchRight from '@assets/arch/pic-right.png';
+import ArchBottomLeft from '@assets/arch/pic-bottom-left.png';
+import ArchBottomRight from '@assets/arch/pic-bottom-right.png';
+import ArchLeftMobile from '@assets/arch/pic-left-mobile.png'
+
 
 // @ts-ignore
 const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quality: 'mid' });
@@ -24,12 +31,21 @@ const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quali
       ${optimizedBackground2x.src} 800w, 
       ${optimizedBackground3x.src} 1200w`}> -->
     <img src={optimizedBackground.src} slot="background" alt="background image">
-    <!-- <Image src={LogoMain} slot="logoMain" alt="Logo main" /> -->
     <Image src={LogoSmall} slot="logoSmall" alt="Logo small" quality="max" />
     <Image src={SidebarImg} slot="sidebarImage" width={680} height={368} alt="sidebar img" />
   </StartScreen>
   
   <AboutScreen>
+    <Image src={ArchTop} slot="top" width={648} height={336} alt="top" />
+    <Image src={ArchLeft} slot="left" width={220} height={280} alt="left" />
+    <Image src={ArchLeftMobile} slot="leftMobile" width={240} height={328} alt="leftMobile" />
+    <Image src={ArchMainCenter} slot="mainCenter" width={576} height={324} alt="mainCenter" />
+    <Image src={ArchRight} slot="right" width={220} height={280} alt="right" />
+    <Image src={ArchBottomLeft} slot="bottomLeft" width={198} height={280} alt="bottomLeft" />
+    <Image src={ArchBottomRight} slot="bottomRight" width={546} height={320} alt="bottomRight" />
+    <Image src={ArchMainCenter} slot="bgArch2" quality="max" alt="bg-arch2" />
+
+
   </AboutScreen>
       
 </Layout>

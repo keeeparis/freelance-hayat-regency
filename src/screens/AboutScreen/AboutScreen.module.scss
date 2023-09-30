@@ -1,0 +1,203 @@
+@import '@styles/variables';
+@import '@styles/mixins';
+
+.about {
+  margin-top: 48px;
+  position: relative;
+  overflow: hidden;
+  
+  @include for-tablet-portrait-up {
+    margin-top: 144px;
+  }
+
+  &_info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-inline: auto;
+    gap: 16px;
+    max-width: 560px;
+    z-index: 1;
+    position: relative;
+    padding-inline: 20px;
+    
+    @include for-tablet-portrait-up {
+      align-items: center;
+      max-width: calc(calc(560/1440)*100)+vw;
+    }
+
+    &_subtitle {
+      color: $dark-50;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 170%; 
+      letter-spacing: 0.28px;
+      
+      @include for-tablet-portrait-up {
+        @include responsive-font-size(14);
+      }
+    }
+
+    &_title {
+      color: $gold-10;
+      text-align: start;
+      
+      font-family: Romanovsky;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 146%;
+      
+      @include for-tablet-portrait-up {
+        text-align: center;
+        @include responsive-font-size(30)
+      }
+
+      span {
+        color: $gold-100;
+      }
+    }
+  }
+
+  &_bottom {
+    margin-top: 48px;
+    padding-inline: 20px;
+    
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    z-index: 1;
+    position: relative;
+    
+    @include for-tablet-portrait-up {
+      margin-top: 152px;
+      flex-direction: row;
+      padding-inline: 48px;
+      align-items: flex-end;
+    }
+
+    &_text {
+      color: $gold-10;
+
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 170%;
+      letter-spacing: 0.28px;
+      flex-basis: 30%;
+
+      @include for-tablet-portrait-up {
+        @include responsive-font-size(14)
+      }
+    }
+
+    &_img {
+      margin: 48px 0;
+      align-self: center;
+
+      img:nth-child(2) {
+        width: 104px;
+        height: 148px;
+        margin-left: -30px;
+      }
+
+      @include for-tablet-portrait-up {
+        display: none;
+      }
+    }
+
+    &_stats {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      
+      @include for-tablet-portrait-up {
+        flex-basis: 700px;
+        flex-direction: row;
+      }
+
+      &_item {
+        padding: 0 0 12px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        flex: 1;
+        background-color: $dark-100;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $dark-75;
+        
+        @include for-tablet-portrait-up {
+          padding: 16px 0;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          border-bottom: 0;
+        }
+
+        &_value {
+          color: $gold-100;
+          font-family: Romanovsky;
+          font-size: 36px;
+          font-weight: 400;
+          order: 1;
+
+          @include for-tablet-portrait-up {
+            order: 0;
+            @include responsive-font-size(48)
+          }
+        }
+
+        &_text {
+          color: $gold-10;
+          font-size: 11px;
+          font-weight: 400;
+          line-height: 166%;
+          letter-spacing: 0.24px;
+
+          @include for-tablet-portrait-up {
+            @include responsive-font-size(12)
+          }
+        }
+      }
+
+    }
+  }
+}
+
+.circles {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  @include for-phone-only {
+    display: none;
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &_lg {
+    width: 1080px;
+    height: 1080px;
+    border: 1px solid $dark-75;
+    border-radius: 50%;
+    transform: translateX(33%);
+
+  }
+  &_md {
+    width: 776px;
+    height: 776px;
+    border: 1px solid $dark-75;
+    border-radius: 50%;
+    transform: translateX(39%) translateY(18%);
+  }
+  &_sm {
+    width: 480px;
+    height: 480px;
+    border: 1px solid $dark-75;
+    border-radius: 50%;
+    transform: translateX(52%) translateY(59%);
+  }
+}
