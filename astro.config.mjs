@@ -1,14 +1,12 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 
-import tailwind from '@astrojs/tailwind';
+// import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://seesaw.kz/freelance',
   build: {
-    assetsPrefix: '/freelance'
+    assetsPrefix: '/freelance' // TODO: remove in production
   },
   integrations: [react()]
-  // scopedStyleStrategy: 'class'
 });

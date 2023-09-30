@@ -87,7 +87,13 @@ export const StartScreen = (props: any) => {
           </p>
         </div>
       </section>
-      {isSidebarVisible && <Sidebar setIsSidebarVisible={setIsSidebarVisible} setIsBackCall={setIsBackCall} />}
+      {isSidebarVisible && (
+        <Sidebar
+          setIsSidebarVisible={setIsSidebarVisible}
+          setIsBackCall={setIsBackCall}
+          sidebarImage={props.sidebarImage}
+        />
+      )}
       {isBackCall &&
         createPortal(<BackCallModal closeModal={() => setIsBackCall(false)}></BackCallModal>, document.body)}
     </>

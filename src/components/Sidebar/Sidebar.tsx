@@ -12,7 +12,7 @@ const NAV_LINKS = [
   ['подбор квартиры', '#about']
 ];
 
-export const Sidebar = ({ setIsSidebarVisible, setIsBackCall }: any) => {
+export const Sidebar = ({ setIsSidebarVisible, setIsBackCall, sidebarImage }: any) => {
   return (
     <>
       <div className={styles.sidebar}>
@@ -142,7 +142,7 @@ export const Sidebar = ({ setIsSidebarVisible, setIsBackCall }: any) => {
             </div>
           </div>
           <div className={styles.sidebar_body_right}>
-            <img src="/src/assets/sidebar/img.png" alt="sidebar img" width={680} height={368} />
+            {sidebarImage}
             <div className={styles.sidebar_body_right_info}>
               <a href="tel:+7 700 511 17 77">+7 700 511 17 77</a>
               <p>

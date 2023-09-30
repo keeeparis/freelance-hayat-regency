@@ -9,6 +9,7 @@ import AboutScreen from '@screens/AboutScreen';
 import BgImage from '@assets/start-screen/bg.jpeg';
 import LogoSmall from '@assets/start-screen/logo-small.png';
 import LogoMain from '@assets/start-screen/logo-main.png';
+import SidebarImg from '@assets/sidebar/img.png';
 
 // @ts-ignore
 const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quality: 'mid' });
@@ -25,6 +26,7 @@ const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quali
     <img src={optimizedBackground.src} slot="background" alt="background image">
     <!-- <Image src={LogoMain} slot="logoMain" alt="Logo main" /> -->
     <Image src={LogoSmall} slot="logoSmall" alt="Logo small" quality="max" />
+    <Image src={SidebarImg} slot="sidebarImage" width={680} height={368} alt="sidebar img" />
   </StartScreen>
   
   <AboutScreen>
