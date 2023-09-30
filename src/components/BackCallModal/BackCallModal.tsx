@@ -1,22 +1,30 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 
 import Button from '@components/Button';
 
-import styles from './Sidebar.module.scss';
-// TODO: links
-const NAV_LINKS = [
-  ['О проекте', '#about'],
-  ['Архитектура', '#architechture'],
-  ['Расположение', '#about'],
-  ['преимущества', '#about'],
-  ['подбор квартиры', '#about']
-];
+import styles from './BackCallModal.module.scss';
 
-export const Sidebar = ({ setIsSidebarVisible, setIsBackCall }: any) => {
+export const BackCallModal = ({ closeModal }: any) => {
+  const [isSuccess, setIsSuccess] = useState(false);
+
   return (
-    <>
-      <div className={styles.sidebar}>
-        <div className={styles.sidebar_head}>
+    <div className={styles.backdrop} onClick={() => closeModal()}>
+      <aside className={cn(styles.modal, { [styles.success]: isSuccess })} onClick={e => e.stopPropagation()}>
+        <div className={styles.modal_close}>
+          <Button onClick={() => closeModal()} rounded transparent gold_border>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path
+                d="M19.8334 8.16663L8.16675 19.8333M8.16675 8.16663L19.8334 19.8333"
+                stroke="#D6CBB4"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Button>
+        </div>
+        <div className={styles.modal_logo}>
           <svg xmlns="http://www.w3.org/2000/svg" width="165" height="44" viewBox="0 0 165 44" fill="none">
             <g clipPath="url(#clip0_104_267)">
               <path
@@ -98,77 +106,35 @@ export const Sidebar = ({ setIsSidebarVisible, setIsBackCall }: any) => {
               </clipPath>
             </defs>
           </svg>
-          <Button transparent rounded gold_border onClick={() => setIsSidebarVisible(false)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path
-                d="M19.8332 8.16675L8.1665 19.8334M8.1665 8.16675L19.8332 19.8334"
-                stroke="#D6CBB4"
-                strokeWidth="1.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </Button>
         </div>
-        <div className={styles.sidebar_body}>
-          <div className={styles.sidebar_body_left}>
-            <ul className={styles.sidebar_body_left_nav}>
-              {NAV_LINKS.map(([name, link], idx) => (
-                <li key={name}>
-                  <a href={link} onClick={() => setIsSidebarVisible(false)}>
-                    <span>{(idx + 1).toString().padStart(2, '0')}</span>
-                    <p>{name}</p>
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className={styles.sidebar_body_left_bottom}>
-              <nav>
-                <span>О застройщике</span>
-                <span>ход строительства</span>
-                <span>Контакты</span>
-              </nav>
-              <Button
-                transparent
-                gold_border
-                onClick={() => {
-                  setIsBackCall(true);
-                  setIsSidebarVisible(false);
-                }}
-              >
-                заказать звонок
-              </Button>
-              <div>hayat construction group © 2023</div>
-            </div>
+
+        {isSuccess ? (
+          <div className={styles.modal_success}>
+            <h2 className={styles.modal_success_title}>Спасибо за обращение</h2>
+            <p className={styles.modal_success_subtitle}>
+              Спасибо за Ваше обращение, в ближайшее время наши менеджеры свяжутся с Вами.
+            </p>
           </div>
-          <div className={styles.sidebar_body_right}>
-            <img src="/src/assets/sidebar/img.png" alt="sidebar img" width={680} height={368} />
-            <div className={styles.sidebar_body_right_info}>
-              <a href="tel:+7 700 511 17 77">+7 700 511 17 77</a>
-              <p>
-                Алматы, <br />
-                ул. оспанова, 85
-              </p>
-            </div>
-            <div className={styles.sidebar_body_right_bottom}>
-              <p>
-                Офис продаж: <br />
-                Ежедневно 10:00-19:00
-              </p>
-              <Button
-                transparent
-                gold_border
-                onClick={() => {
-                  setIsBackCall(true);
-                  setIsSidebarVisible(false);
-                }}
-              >
-                заказать звонок
+        ) : (
+          <>
+            <h2 className={styles.modal_title}>
+              Заказать <br /> обратный <br /> звонок
+            </h2>
+            <p className={styles.modal_subtitle}>
+              Получите оперативную и подробную <br /> консультацию от нашего специалиста
+            </p>
+
+            <form>
+              <input type="text" name="name" placeholder="ИМЯ" />
+              <input type="text" name="phone-number" placeholder="НОМЕР ТЕЛЕФОНА" />
+              <Button type="submit" transparent onClick={() => setIsSuccess(true)}>
+                оставить заявку
               </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+              <p>НАЖИМАЯ НА КНОПКУ «ОТПРАВИТЬ ЗАЯВКУ», ВЫ ПРИНИМАЕТЕ УСЛОВИЯ ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ</p>
+            </form>
+          </>
+        )}
+      </aside>
+    </div>
   );
 };

@@ -7,5 +7,199 @@
   z-index: 1;
 
   background: $dark-100;
+  padding: 24px 20px 20px;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  
+  @include for-tablet-portrait-up {
+    padding: 24px 48px 40px;
+    gap: 48px;
+  }
+
+  &_head {
+    display: flex;
+    justify-content: space-between;
+
+    > svg {
+      @include for-phone-only {
+        width: 120px;
+        height: auto;
+      }
+    }
+
+    > button {
+      width: 40px; 
+      height: 40px;
+      
+      @include for-tablet-portrait-up {
+        width: 60px; 
+        height: 60px;
+      }
+    }
+  }
+
+  &_body {
+    display: flex;
+    justify-content: space-between;
+    // gap: 176px;
+    flex: 1;
+
+    &_left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &_nav {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        > li {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          
+          @include for-tablet-portrait-up {
+            padding-top: 16px;
+            padding-bottom: 16px;
+          }
+
+          a {
+            text-transform: uppercase;
+            font-weight: 400;
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+
+            span {
+              color: $dark-50;
+              font-size: 12px;
+              line-height: 171%;
+              letter-spacing: .28px;
+              
+              @include for-tablet-portrait-up {
+                font-size: 14px;
+              }
+            }
+
+            p {
+              font-family: 'Romanovsky';
+              font-size: 20px;
+              line-height: 140%;
+              color: $gold-10;
+              
+              @include for-tablet-portrait-up {
+                font-size: 36px;
+                line-height: 122%;
+              }
+
+              &:hover {
+                color: $gold-100;
+              }
+            }
+
+          }
+        }
+      }
+
+      &_bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        > nav {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          
+          @include for-tablet-portrait-up {
+            flex-direction: row;
+            gap: 32px;
+          }
+
+          span {
+            text-transform: uppercase;
+            color: $gold-10;
+            font-size: 13px;
+            line-height: 184%;
+          }
+        }
+
+        > button {
+          margin: 20px 0;
+          border: 1px solid $gold-100;
+          color: $gold-10;
+          width: fit-content;
+
+          @include for-tablet-portrait-up {
+            display: none;
+          }
+        }
+
+        > div {
+          font-size: 12px;
+          line-height: 166%;
+          letter-spacing: .24px;
+          color: $dark-50;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    &_right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      @include for-phone-only {
+        display: none;
+      }
+
+      > img {
+        width: 100%;
+        height: auto;
+      }
+
+      &_info {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        font-size: 24px;
+        line-height: 125%;
+        text-transform: uppercase;
+        letter-spacing: .48px;
+        font-weight: 400;
+
+        > a {
+          color: $gold-100;
+        }
+
+        > p {
+          color: $gold-10;
+        }
+      }
+
+      &_bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        p {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 171%;
+          text-transform: uppercase;
+        }
+
+        > button {
+          height: fit-content;
+          border: 1px solid $gold-100;
+          color: $gold-10;
+        }
+      }
+    }
+  }
 
 }

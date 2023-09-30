@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 import Header from '@components/Header';
 import Button from '@components/Button';
 import Sidebar from '@components/Sidebar';
+import BackCallModal from '@components/BackCallModal';
 
 import styles from './StartScreen.module.scss';
 
 export const StartScreen = (props: any) => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const [isBackCall, setIsBackCall] = useState(false);
 
   return (
     <>
       <section className={styles.screen}>
-        <Header logoSmall={props.logoSmall} setIsSidebarVisible={setIsSidebarVisible} />
+        <Header logoSmall={props.logoSmall} setIsSidebarVisible={setIsSidebarVisible} setIsBackCall={setIsBackCall} />
         <div className={styles.screen_bg}>{props.background}</div>
         <p className={styles.screen_logo_top}>Hayat construction group</p>
         <div className={styles.screen_logoMain}>
@@ -84,7 +87,9 @@ export const StartScreen = (props: any) => {
           </p>
         </div>
       </section>
-      {isSidebarVisible && <Sidebar setIsSidebarVisible={setIsSidebarVisible} />}
+      {isSidebarVisible && <Sidebar setIsSidebarVisible={setIsSidebarVisible} setIsBackCall={setIsBackCall} />}
+      {isBackCall &&
+        createPortal(<BackCallModal closeModal={() => setIsBackCall(false)}></BackCallModal>, document.body)}
     </>
   );
 };

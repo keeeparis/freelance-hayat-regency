@@ -1,9 +1,9 @@
-import React, { type HTMLAttributes } from 'react';
+import React, { type ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 
 import styles from './Button.module.scss';
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   gold_100?: boolean;
   rounded?: boolean;
   gold_border?: boolean;

@@ -13,6 +13,9 @@ html {
   color: $gold-5;
   font-size: 16px;
   font-weight: 500;
+  transition-timing-function: ease-in-out;
+  transition-duration: .25s;
+  text-transform: uppercase;
 }
 h1 {
   // font-size: 2.25rem;

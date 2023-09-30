@@ -19,18 +19,17 @@ const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quali
   <StartScreen client:load>
     <!-- <Image src={optimizedBackground.src} slot="background" alt="background iamge" />   -->
     <!-- <img src={optimizedBackground2x.src} slot="background" alt="background image" srcset={`
-    ${optimizedBackground1x.src} 400w, 
-    ${optimizedBackground2x.src} 800w, 
-    ${optimizedBackground3x.src} 1200w`}> -->
+      ${optimizedBackground1x.src} 400w, 
+      ${optimizedBackground2x.src} 800w, 
+      ${optimizedBackground3x.src} 1200w`}> -->
     <img src={optimizedBackground.src} slot="background" alt="background image">
     <!-- <Image src={LogoMain} slot="logoMain" alt="Logo main" /> -->
     <Image src={LogoSmall} slot="logoSmall" alt="Logo small" quality="max" />
   </StartScreen>
-
+  
   <AboutScreen>
   </AboutScreen>
-
-
+      
 </Layout>
 
 <style>
