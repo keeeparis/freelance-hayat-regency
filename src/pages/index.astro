@@ -5,8 +5,13 @@ import { getImage } from 'astro/assets';
 import Layout from '../layouts/Layout.astro';
 import StartScreen from '@screens/StartScreen';
 import AboutScreen from '@screens/AboutScreen';
+import Exterior from '@screens/Exterior';
+import Location from '@screens/Location';
+import Features from '@screens/Features';
+
 import BgImage from '@assets/start-screen/bg.jpeg';
 import LogoSmall from '@assets/start-screen/logo-small.png';
+
 import SidebarImg from '@assets/sidebar/img.png';
 
 import ArchTop from '@assets/arch/pic-top.png';
@@ -16,6 +21,18 @@ import ArchRight from '@assets/arch/pic-right.png';
 import ArchBottomLeft from '@assets/arch/pic-bottom-left.png';
 import ArchBottomRight from '@assets/arch/pic-bottom-right.png';
 import ArchLeftMobile from '@assets/arch/pic-left-mobile.png'
+import ArchBg from '@assets/arch/arch-3-bg-picture.png';
+import ArchStoneball from '@assets/arch/picture-stoneball.png';
+import ArchMetal from '@assets/arch/picture-metal.png';
+
+import Slider1 from '@assets/exterior/carousel-picture-01.png';
+import Slider2 from '@assets/exterior/carousel-picture-02.png';
+import Slider3 from '@assets/exterior/carousel-picture-03.png';
+import Slider4 from '@assets/exterior/carousel-picture-04.png';
+import Slider5 from '@assets/exterior/carousel-picture-05.png';
+import Slider6 from '@assets/exterior/carousel-picture-06.png';
+import Slider7 from '@assets/exterior/carousel-picture-07.png';
+import Slider8 from '@assets/exterior/carousel-picture-08.png';
 
 
 // @ts-ignore
@@ -36,17 +53,41 @@ const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quali
   </StartScreen>
   
   <AboutScreen>
-    <Image src={ArchTop} slot="top" width={648} height={336} alt="top" />
-    <Image src={ArchLeft} slot="left" width={220} height={280} alt="left" />
-    <Image src={ArchLeftMobile} slot="leftMobile" width={240} height={328} alt="leftMobile" />
-    <Image src={ArchMainCenter} slot="mainCenter" width={576} height={324} alt="mainCenter" />
-    <Image src={ArchRight} slot="right" width={220} height={280} alt="right" />
-    <Image src={ArchBottomLeft} slot="bottomLeft" width={198} height={280} alt="bottomLeft" />
-    <Image src={ArchBottomRight} slot="bottomRight" width={546} height={320} alt="bottomRight" />
+    <Image src={ArchTop} slot="top" width={648} height={336} alt="top" quality="max" />
+    <Image src={ArchLeft} slot="left" width={220} height={280} alt="left" quality="high" />
+    <Image src={ArchLeftMobile} slot="leftMobile" width={240} height={328} alt="leftMobile" quality="max" />
+    <Image src={ArchMainCenter} slot="mainCenter" width={576} height={324} alt="mainCenter" quality="max" />
+    <Image src={ArchRight} slot="right" width={220} height={280} alt="right" quality="max" />
+    <Image src={ArchBottomLeft} slot="bottomLeft" width={198} height={280} alt="bottomLeft" quality="max" />
+    <Image src={ArchBottomRight} slot="bottomRight" width={546} height={320} alt="bottomRight" quality="max" />
+    
     <Image src={ArchMainCenter} slot="bgArch2" quality="max" alt="bg-arch2" />
-
-
+    
+    <Image src={ArchBg} slot="bgArch3" width={816} height={810} alt="bg-arch3" />
+    
+    <Image src={ArchStoneball} slot="stoneball" width={205} height={202} alt="Stoneball" quality="max" />
+    <Image src={ArchMetal} slot="metal" width={189} height={198} alt="Metal" quality={"max"} />
+    
   </AboutScreen>
+  
+  <Exterior client:visible>
+    <Image src={Slider1} slot="slider1" width={960} height={640} quality="max" alt="slider1" />
+    <Image src={Slider2} slot="slider2" width={960} height={640} quality="max" alt="slider2" />
+    <Image src={Slider3} slot="slider3" width={960} height={640} quality="max" alt="slider3" />
+    <Image src={Slider4} slot="slider4" width={960} height={640} quality="max" alt="slider4" />
+    <Image src={Slider5} slot="slider5" width={960} height={640} quality="max" alt="slider5" />
+    <Image src={Slider6} slot="slider6" width={960} height={640} quality="max" alt="slider6" />
+    <Image src={Slider7} slot="slider7" width={960} height={640} quality="max" alt="slider7" />
+    <Image src={Slider8} slot="slider8" width={960} height={640} quality="max" alt="slider8" />
+  </Exterior>
+
+  <Location client:visible>
+
+  </Location>
+
+  <Features client:visible>
+
+  </Features>
       
 </Layout>
 
