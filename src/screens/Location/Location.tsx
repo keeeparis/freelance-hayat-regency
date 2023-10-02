@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import GoogleMapReact from 'google-map-react';
 import cn from 'classnames';
 
@@ -390,8 +390,8 @@ const markers = [
     )
   },
   {
-    lat: 43.22379680712097,
-    lng: 76.96748766340622,
+    lat: 43.215931670013106,
+    lng: 76.96872898738592,
     text: 'ТЕрРЕНКУР',
     textSide: true,
     inner: (
@@ -405,8 +405,8 @@ const markers = [
     )
   },
   {
-    lat: 43.23416320356148,
-    lng: 76.97608756075893,
+    lat: 43.224490441921745,
+    lng: 76.982531298901,
     text: 'кок-тобе',
     textSide: false,
     inner: (
@@ -447,8 +447,8 @@ const markers = [
     )
   },
   {
-    lat: 43.21436400280259,
-    lng: 76.93581819389922,
+    lat: 43.21080832666665,
+    lng: 76.93272295734658,
     text: 'invictus',
     textSide: true,
     inner: (
@@ -500,8 +500,8 @@ const markers = [
     )
   },
   {
-    lat: 43.21964924032061,
-    lng: 76.92831876615377,
+    lat: 43.21963267126615,
+    lng: 76.9275318005448,
     text: 'essentai mall',
     textSide: true,
     inner: (
@@ -550,8 +550,8 @@ const markers = [
     )
   },
   {
-    lat: 43.21196953210788,
-    lng: 76.92251751473003,
+    lat: 43.20949618169906,
+    lng: 76.91660597214904,
     text: 'Villa dei Fiori',
     textSide: true,
     inner: (
@@ -616,13 +616,12 @@ const markers = [
 
 const API_KEY = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY;
 
-// TODO: mobile
-
 export const Location = () => {
   return (
     <div className={styles.wrap}>
       <section className={styles.loc}>
         <div className={styles.loc_info}>
+          <p className={styles.loc_info_subtitle}>Расположение</p>
           <h3>
             Сквозь призму <span>локации</span>
           </h3>
@@ -630,6 +629,13 @@ export const Location = () => {
             ЖК Hayat Regency расположен в самом сердце многогранного города Алматы, предоставляя своим жителям доступ ко
             всей городской инфраструктуре.
           </p>
+          <div className={styles.loc_info_address}>
+            <p className={styles.loc_info_address_sub}>Адрес ЖК:</p>
+            <p className={styles.loc_info_address_main}>
+              <span>Алматы</span>, улица оспанова, <br />
+              владение 85
+            </p>
+          </div>
         </div>
         <Map />
       </section>
@@ -669,7 +675,7 @@ const Map = () => {
       lat: 43.20624,
       lng: 76.948077
     },
-    zoom: 13.85
+    zoom: 13.9
   };
 
   return (
@@ -685,6 +691,9 @@ const Map = () => {
         yesIWantToUseGoogleMapApiInternals={true}
         onGoogleApiLoaded={({ map, maps }) => {
           ref.current = map;
+          if (window.screen.width < 960) {
+            map.setCenter({ lat: 43.2, lng: 76.969 });
+          }
         }}
         ref={ref}
       >
@@ -728,6 +737,9 @@ const Map = () => {
             />
           </svg>
         </Button>
+      </div>
+      <div className={styles.map_action}>
+        <Button>Построить маршрут</Button>
       </div>
     </div>
   );

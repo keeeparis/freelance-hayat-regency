@@ -1,0 +1,155 @@
+@import '@styles/variables';
+@import '@styles/mixins';
+
+.feat {
+  // display: flex;
+  // flex-direction: column;
+  margin-inline: 20px;
+  position: relative;
+  margin-bottom: 100px; // TODO: 
+
+  @include for-tablet-portrait-up {
+    margin-inline-start: 48px;
+    margin-inline-end: 0px;
+  }
+
+  &_info {
+    margin-top: 148px;
+    margin-bottom: 148px;
+    max-width: 680px;
+    margin-inline: auto;
+
+    font-family: Romanovsky;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 160%;
+
+    span {
+      color: $gold-100;
+    }
+  }
+
+  &_sliders {
+    display: flex;
+    width: calc(100vw - 96px);
+
+    &_main {
+      margin-right: auto;
+      width: 30%;
+
+      &_slide {
+        display: flex;
+        flex-direction: column;
+        gap: 56px;
+        // width: fit-content;
+        background-color: $dark-100;;
+      }
+
+      &_controls {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        gap: 8px;
+
+      }
+    }
+
+    &_thumb {
+      width: 50%;
+
+      &_slide {
+        display: flex;
+        gap: 24px;
+
+
+        &_info {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          
+          > p {
+            color: $gold-10;
+            
+            font-family: Romanovsky;
+            font-size: 52px;
+            font-weight: 400;
+            line-height: 120%;
+            
+            @include for-tablet-portrait-up {
+              transform: rotate(180deg);
+              writing-mode: vertical-lr;
+              order: 0
+            };
+          }
+          
+          &_page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h3 {
+              color: $gold-100;
+              font-family: Romanovsky;
+              font-size: 44px;
+              font-weight: 400;
+              line-height: 110%;
+            }
+
+            p {
+              white-space: pre;
+              color: $dark-50;
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 167%;
+              letter-spacing: 0.24px;
+            }
+          }
+        }
+
+        img {
+          width: 824px;
+          height: 640px;
+        }
+      }
+    }
+  }
+
+  &_button_prev {
+    left: 48px;
+  }
+
+  &_button_next {
+    right: 48px;
+  }
+
+  &_button_prev, &_button_next {
+    position: static;
+    background-color: $gold-100;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    // display: none;
+    cursor: pointer;
+    display: flex;
+    flex-shrink: 0;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    @include for-tablet-portrait-up {
+      width: 72px;
+      height: 72px;
+
+      svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}

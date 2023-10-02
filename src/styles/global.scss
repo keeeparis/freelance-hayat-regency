@@ -30,3 +30,7 @@ li {
 .swiper-button-prev, .swiper-button-next {
   display: none !important;
 }
+
+// google-maps styles hide footer
+.gm-style-cc { display:none; }
+a[href^="https://maps.google.com/maps"]{display:none !important}

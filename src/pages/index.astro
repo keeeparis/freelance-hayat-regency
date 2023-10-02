@@ -7,6 +7,7 @@ import StartScreen from '@screens/StartScreen';
 import AboutScreen from '@screens/AboutScreen';
 import Exterior from '@screens/Exterior';
 import Location from '@screens/Location';
+import Places from '@screens/Places';
 import Features from '@screens/Features';
 
 import BgImage from '@assets/start-screen/bg.jpeg';
@@ -34,9 +35,28 @@ import Slider6 from '@assets/exterior/carousel-picture-06.png';
 import Slider7 from '@assets/exterior/carousel-picture-07.png';
 import Slider8 from '@assets/exterior/carousel-picture-08.png';
 
+import Place1 from '@assets/places/slider-picture-medeo-1.png';
+import Place2 from '@assets/places/slider-picture-medeo-2.png';
+import Place3 from '@assets/places/slider-picture-medeo-3.png';
+import Place4 from '@assets/places/slider-picture-medeo-4.png';
+import Place5 from '@assets/places/slider-picture-medeo-5.png';
+import Place6 from '@assets/places/slider-picture-medeo-6.png';
+import Place7 from '@assets/places/slider-picture-medeo-7.png';
+import Place8 from '@assets/places/slider-picture-medeo-8.png';
+import Place9 from '@assets/places/slider-picture-medeo-9.png';
+import Place10 from '@assets/places/slider-picture-medeo-10.png';
+
+import Feat1 from '@assets/features/picture-gym.png';
+import Feat2 from '@assets/features/picture-kids.png';
+import Feat3 from '@assets/features/picture-coworking.png';
+import Feat4 from '@assets/features/picture-hamam.png';
 
 // @ts-ignore
 const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quality: 'mid' });
+
+function dpr(initial: number, increaseBy = 1.5) {
+  return initial * increaseBy
+}
 
 ---
 
@@ -80,13 +100,29 @@ const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quali
     <Image src={Slider7} slot="slider7" width={960} height={640} quality="max" alt="slider7" />
     <Image src={Slider8} slot="slider8" width={960} height={640} quality="max" alt="slider8" />
   </Exterior>
-
+  
   <Location client:visible>
-
+    
   </Location>
-
+  
+  <Places client:visible>
+    <Image src={Place1} slot="Place1" width={dpr(560)} height={dpr(496)} quality="max" alt="Place1" />
+    <Image src={Place2} slot="Place2" width={dpr(560)} height={dpr(560)} quality="max" alt="Place2" />
+    <Image src={Place3} slot="Place3" width={dpr(560)} height={dpr(496)} quality="max" alt="Place3" />
+    <Image src={Place4} slot="Place4" width={dpr(560)} height={dpr(560)} quality="max" alt="Place4" />
+    <Image src={Place5} slot="Place5" width={dpr(560)} height={dpr(496)} quality="max" alt="Place5" />
+    <Image src={Place6} slot="Place6" width={dpr(560)} height={dpr(560)} quality="max" alt="Place6" />
+    <Image src={Place7} slot="Place7" width={dpr(560)} height={dpr(496)} quality="max" alt="Place7" />
+    <Image src={Place8} slot="Place8" width={dpr(560)} height={dpr(560)} quality="max" alt="Place8" />
+    <Image src={Place9} slot="Place9" width={dpr(560)} height={dpr(496)} quality="max" alt="Place9" />
+    <Image src={Place10} slot="Place10" width={dpr(560)} height={dpr(560)} quality="max" alt="Place10" />
+  </Places>
+  
   <Features client:visible>
-
+    <Image src={Feat1} slot="Feat1" width={dpr(824)} height={dpr(640)} quality="max" alt="Feat1" />
+    <Image src={Feat2} slot="Feat2" width={dpr(824)} height={dpr(640)} quality="max" alt="Feat2" />
+    <Image src={Feat3} slot="Feat3" width={dpr(824)} height={dpr(640)} quality="max" alt="Feat3" />
+    <Image src={Feat4} slot="Feat4" width={dpr(824)} height={dpr(640)} quality="max" alt="Feat4" />
   </Features>
       
 </Layout>
