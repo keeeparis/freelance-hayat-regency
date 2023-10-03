@@ -62,12 +62,13 @@ export const Features = (props: any) => {
 
   return (
     <div className={styles.feat}>
-      <p className={styles.feat_info}>
+      <div className={styles.feat_info}>
+        <p className={styles.feat_info_sub}>Преимущества</p>
         <span>Система all-in-one</span> в жилом комплексе — это инновационное решение, которое позволяет жильцам{' '}
         <span>получать все</span>
         необходимые услуги <br />
         на одной платформе.
-      </p>
+      </div>
       <div className={styles.feat_sliders}>
         <div className={styles.feat_sliders_main}>
           {/* Main Swiper -> pass thumbs swiper instance */}
@@ -76,8 +77,8 @@ export const Features = (props: any) => {
             thumbs={{ swiper: thumbsSwiper }}
             slidesPerView={1}
             loop={true}
-            effect={'creative'}
             style={{ height: '100%' }}
+            effect="creative"
             creativeEffect={{
               prev: {
                 shadow: true,
@@ -89,10 +90,26 @@ export const Features = (props: any) => {
                 translate: ['0%', '100%', 0]
               }
             }}
+            // breakpoints={{
+            //   960: {
+            //     effect: 'creative',
+            //     creativeEffect: {
+            //       prev: {
+            //         shadow: true,
+            //         opacity: 0,
+            //         translate: ['0%', '0%', -1]
+            //       },
+            //       next: {
+            //         opacity: 1,
+            //         translate: ['0%', '100%', 0]
+            //       }
+            //     }
+            //   }
+            // }}
           >
             {slides.map((slide, idx) => (
               <SwiperSlide key={idx} className={styles.feat_sliders_main_slide}>
-                <p>{slide.title}</p>
+                <h3>{slide.title}</h3>
                 {slide.text}
               </SwiperSlide>
             ))}
@@ -114,12 +131,30 @@ export const Features = (props: any) => {
             slidesPerView={1}
             lazyPreloadPrevNext={2}
             loop={true}
+            // effect="slide"
+            // breakpoints={{
+            //   960: {
+            //     effect: 'creative',
+            //     creativeEffect: {
+            //       prev: {
+            //         // shadow: true,
+            //         opacity: 0,
+            //         translate: ['0%', 0, 0]
+            //       },
+            //       next: {
+            //         opacity: 1,
+            //         translate: ['100%', 0, 0]
+            //       }
+            //     }
+            //   }
+            // }}
+            draggable={false}
             effect={'creative'}
             creativeEffect={{
               prev: {
                 // shadow: true,
                 opacity: 0,
-                translate: ['0%', 0, -1]
+                translate: ['0%', 0, 0]
               },
               next: {
                 opacity: 1,

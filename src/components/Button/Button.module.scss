@@ -34,6 +34,8 @@
 
   &_gold_border {
     border-color: $gold-100;
+    border: 1px solid $gold-100;
+    color: $gold-10;
   }
 
   &_transparent {

@@ -3,12 +3,17 @@ import { Image } from 'astro:assets';
 import { getImage } from 'astro/assets';
 
 import Layout from '../layouts/Layout.astro';
+import Footer from '@components/Footer';
 import StartScreen from '@screens/StartScreen';
 import AboutScreen from '@screens/AboutScreen';
 import Exterior from '@screens/Exterior';
 import Location from '@screens/Location';
 import Places from '@screens/Places';
 import Features from '@screens/Features';
+import FlatPicker from '@screens/FlatPicker';
+import Progress from '@screens/Progress';
+import Developer from '@screens/Developer';
+import CallbackForm from '@screens/CallbackForm';
 
 import BgImage from '@assets/start-screen/bg.jpeg';
 import LogoSmall from '@assets/start-screen/logo-small.png';
@@ -50,6 +55,7 @@ import Feat1 from '@assets/features/picture-gym.png';
 import Feat2 from '@assets/features/picture-kids.png';
 import Feat3 from '@assets/features/picture-coworking.png';
 import Feat4 from '@assets/features/picture-hamam.png';
+
 
 // @ts-ignore
 const optimizedBackground = await getImage({ src: BgImage, format: 'webp', quality: 'mid' });
@@ -124,7 +130,17 @@ function dpr(initial: number, increaseBy = 1.5) {
     <Image src={Feat3} slot="Feat3" width={dpr(824)} height={dpr(640)} quality="max" alt="Feat3" />
     <Image src={Feat4} slot="Feat4" width={dpr(824)} height={dpr(640)} quality="max" alt="Feat4" />
   </Features>
-      
+
+
+  <FlatPicker client:visible></FlatPicker>
+
+  <Progress client:visible></Progress>
+
+  <Developer client:visible></Developer>
+
+  <CallbackForm client:visible />
+
+  <Footer />
 </Layout>
 
 <style>

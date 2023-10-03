@@ -34,3 +34,26 @@ li {
 // google-maps styles hide footer
 .gm-style-cc { display:none; }
 a[href^="https://maps.google.com/maps"]{display:none !important}
+
+// range-selector
+.range-slider {
+  height: 1px !important;
+}
+.range-slider .range-slider__range {
+  background: $gold-100 !important;
+}
+// .range-slider .range-slider__range[data-active] {
+//   /* CSS for active (actively being dragged) range */
+// }
+.range-slider .range-slider__thumb {
+  /* CSS for thumbs */
+  background: $gold-100 !important;
+  width: 14px !important;
+  height: 14px !important;
+}
+// .range-slider .range-slider__thumb[data-lower] {
+//   /* CSS for lower thumb */
+// }
+// .range-slider .range-slider__thumb[data-upper] {
+//   /* CSS for upper thumb */
+// }
