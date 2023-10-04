@@ -620,7 +620,7 @@ export const Location = () => {
   return (
     <div className={styles.wrap}>
       <section className={styles.loc}>
-        <div className={styles.loc_info}>
+        <div className={styles.loc_info} id="location">
           <p className={styles.loc_info_subtitle}>Расположение</p>
           <h3>
             Сквозь призму <span>локации</span>

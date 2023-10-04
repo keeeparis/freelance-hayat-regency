@@ -89,10 +89,21 @@
           background: transparent;
           color: $gold-10;
           border: 1px solid $gold-100;
+          cursor: pointer;
+          transition: all .25s ease-in-out;
+
+          &:hover {
+            color: $gold-100;
+            border: 1px solid $gold-80;
+          }
 
           &[data-active='true'] {
             background: $gold-100;
             color: $dark-100;
+
+            &:hover {
+              background-color: $gold-80;
+            }
           }
         }
       }
@@ -125,8 +136,6 @@
       display: flex;
       background: transparent;
       align-items: center;
-      border: 1px solid $gold-100;
-      color: $gold-10;
       gap: 8px;
       padding: 8px 20px;
     }
@@ -269,8 +278,19 @@
       color: $dark-100;
       border: 1px solid $gold-100;
 
+      transition: all .25s ease-in-out;
+
+      &:hover {
+        background-color: $gold-80;
+      }
+
       &[data-disabled='true'] {
         background-color: transparent;
+
+        &:hover {
+          border: 1px solid $gold-10;
+        }
+
         svg {
           color: $gold-10;
         }

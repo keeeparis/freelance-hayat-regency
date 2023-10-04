@@ -62,7 +62,7 @@ export const Features = (props: any) => {
 
   return (
     <div className={styles.feat}>
-      <div className={styles.feat_info}>
+      <div className={styles.feat_info} id="features">
         <p className={styles.feat_info_sub}>Преимущества</p>
         <span>Система all-in-one</span> в жилом комплексе — это инновационное решение, которое позволяет жильцам{' '}
         <span>получать все</span>

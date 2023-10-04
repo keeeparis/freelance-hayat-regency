@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import Button from '@components/Button';
 
 import styles from './Sidebar.module.scss';
-// TODO: links
+
 const NAV_LINKS = [
   ['О проекте', '#about'],
   ['Архитектура', '#architechture'],
-  ['Расположение', '#about'],
-  ['преимущества', '#about'],
-  ['подбор квартиры', '#about']
+  ['Расположение', '#location'],
+  ['преимущества', '#features'],
+  ['подбор квартиры', '#flat-picker']
 ];
 
 export const Sidebar = ({ setIsSidebarVisible, setIsBackCall, sidebarImage }: any) => {

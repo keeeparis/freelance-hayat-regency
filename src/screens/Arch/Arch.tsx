@@ -44,7 +44,7 @@ export const Arch = (props: any) => {
         </div>
       </div>
       <div className={styles.arch_3}>
-        <div className={styles.arch_3_bg}>
+        <div className={styles.arch_3_bg} id="architechture">
           {props.bgArch3}
           <div className={styles.arch_3_bg_info}>
             <div className={styles.arch_3_bg_info_text}>

@@ -111,7 +111,9 @@ export const FlatPicker = () => {
       <div className={styles.flat}>
         <div className={styles.flat_head}>
           <p className={styles.flat_head_subtitle}>планировки</p>
-          <h2 className={styles.flat_head_title}>подбор квартиры</h2>
+          <h2 className={styles.flat_head_title} id="flat-picker">
+            подбор квартиры
+          </h2>
         </div>
         <div className={styles.flat_filters}>
           <div className={styles.flat_filters_item}>
@@ -162,8 +164,12 @@ export const FlatPicker = () => {
           <div className={styles.flat_filters_item}>
             <label htmlFor="square">Общая площадь, м²</label>
             <div className={styles.flat_filters_item_range}>
-              <p>{watchSquare[0]}</p>
-              <p>{watchSquare[1]}</p>
+              <p>
+                {watchSquare[0]} м<sup>2</sup>
+              </p>
+              <p>
+                {watchSquare[1]} м<sup>2</sup>
+              </p>
             </div>
             <RangeSlider
               min={88.3}
@@ -211,7 +217,7 @@ export const FlatPicker = () => {
             </div>
           ))}
           {filteredBySquareAndRoomAndFloorAndBlock.length - (offset * LIMIT + LIMIT) < 0 ? null : (
-            <Button onClick={() => setOffset(prev => prev + 1)}>
+            <Button transparent gold_border onClick={() => setOffset(prev => prev + 1)}>
               показать еще {filteredBySquareAndRoomAndFloorAndBlock.length - (offset * LIMIT + LIMIT)} из{' '}
               {APARTMENTS.length}
             </Button>
@@ -246,9 +252,9 @@ export const FlatPicker = () => {
                   <h4>{modalData.room} комнатная</h4>
                   <div>
                     <span>{modalData.block} блок</span>
-                    <span className={styles.modal_info_dot}></span>
+                    <span className={styles.modal_info_left_dot}></span>
                     <span>{modalData.floor} этаж</span>
-                    <span className={styles.modal_info_dot}></span>
+                    <span className={styles.modal_info_left_dot}></span>
                     <span>Чистовая отделка</span>
                   </div>
                 </div>

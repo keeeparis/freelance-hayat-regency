@@ -8,7 +8,7 @@
   cursor: pointer;
 
   padding: 8px 20px;
-  border-radius: 20px;
+  border-radius: 999px;
   background: $gold-5;
   color: $dark-100;
   text-transform: uppercase;
@@ -21,6 +21,12 @@
   
   @include for-tablet-portrait-up {
     @include responsive-font-size(13)
+  }
+  transition: inherit;
+
+  &:hover {
+    background: $gold-100;
+    transition: all 0.25s ease-in-out;
   }
 
   &_rounded {
@@ -36,13 +42,28 @@
     border-color: $gold-100;
     border: 1px solid $gold-100;
     color: $gold-10;
-  }
 
+  }
+  
   &_transparent {
     background: transparent;
+
+    &:hover {
+      border: 1px solid $gold-100;
+      background: $gold-100;
+      color: $dark-100 !important;
+
+      svg {
+        filter: invert(1);
+      }
+    }
   }
 
   &_gold_100 {
     background-color: $gold-100;
+
+    &:hover {
+      background-color: $gold-80;
+    }
   }
 }

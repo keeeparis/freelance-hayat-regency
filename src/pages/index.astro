@@ -131,8 +131,8 @@ function dpr(initial: number, increaseBy = 1.5) {
     <Image src={Feat4} slot="Feat4" width={dpr(824)} height={dpr(640)} quality="max" alt="Feat4" />
   </Features>
 
-
-  <FlatPicker client:visible></FlatPicker>
+  <!-- renders on client due to rangeSlider library -->
+  <FlatPicker client:only="react"></FlatPicker>
 
   <Progress client:visible></Progress>
 

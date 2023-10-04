@@ -199,9 +199,19 @@
     flex-shrink: 0;
     color: $dark-100;
     border: 1px solid $gold-100;
+    transition: all .25s ease-in-out;
+
+    &:hover {
+      background-color: $gold-80;
+    }
 
     &[data-disabled='true'] {
       background-color: transparent;
+
+      &:hover {
+        border: 1px solid $gold-10;
+      }
+
       svg {
         color: $gold-10;
       }

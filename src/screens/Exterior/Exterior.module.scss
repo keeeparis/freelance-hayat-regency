@@ -127,6 +127,12 @@
     align-items: center;
     display: none;
     cursor: pointer;
+
+    transition: all .25s ease-in-out;
+
+    &:hover {
+      background-color: $gold-80;
+    }
     
     @include for-tablet-portrait-up {
       display: flex;

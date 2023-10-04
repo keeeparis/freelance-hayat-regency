@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import Header from '@components/Header';
@@ -11,6 +11,26 @@ import styles from './StartScreen.module.scss';
 export const StartScreen = (props: any) => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const [isBackCall, setIsBackCall] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const handleScroll = () => {
+    const position = window.scrollY;
+    const winHeight = window.innerHeight;
+
+    if (position > winHeight) {
+      ref.current?.classList.add(styles.visible);
+    } else {
+      ref.current?.classList.remove(styles.visible);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -87,6 +107,23 @@ export const StartScreen = (props: any) => {
           </p>
         </div>
       </section>
+      <div className={styles.bottom_call} ref={ref}>
+        <Button gold_100 onClick={() => setIsBackCall(true)}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <g clipPath="url(#clip0_256_543)">
+              <path
+                d="M18.3952 13.1277C17.1707 13.1277 15.9684 12.9362 14.8291 12.5597C14.2708 12.3693 13.5845 12.544 13.2438 12.8939L10.995 14.5915C8.38703 13.1994 6.78057 11.5934 5.40745 9.00505L7.0551 6.81484C7.48318 6.38734 7.63672 5.76286 7.45276 5.17693C7.07464 4.03161 6.88255 2.8299 6.88255 1.6049C6.8826 0.719948 6.16266 0 5.27776 0H1.60484C0.719948 0 0 0.719948 0 1.60484C0 11.7481 8.25198 20 18.3952 20C19.2801 20 20.0001 19.2801 20.0001 18.3952V14.7325C20 13.8477 19.2801 13.1277 18.3952 13.1277Z"
+                fill="#171516"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_256_543">
+                <rect width="20" height="20" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </Button>
+      </div>
       {isSidebarVisible && (
         <Sidebar
           setIsSidebarVisible={setIsSidebarVisible}

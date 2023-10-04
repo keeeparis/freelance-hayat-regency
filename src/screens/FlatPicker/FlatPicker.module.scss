@@ -87,6 +87,10 @@
         background-repeat: no-repeat;
         background-position: right 16px center;
         background-image: url('/assets/icon-chevron-down.svg');
+
+        &:hover {
+          border: 1px solid $gold-80;
+        }
       }
 
       &_radio {
@@ -103,10 +107,20 @@
           text-align: center;
           flex: 1;
           cursor: pointer;
+          transition: all .25s ease-in-out;
+
+          &:hover {
+            color: $gold-100;
+            border: 1px solid $gold-80;
+          }
 
           &[data-active=true] {
             background-color: $gold-100;
             color: $dark-100;
+
+            &:hover {
+              background-color: $gold-80;
+            }
           }
         }
       }
@@ -147,6 +161,10 @@
         flex-direction: row;
         border: 0;
         border-bottom: 1px solid $dark-75;
+
+        &:last-child {
+          border-bottom: 0;
+        }
       }
 
       &_square {
@@ -278,23 +296,36 @@
   z-index: 10;
 
   &_inner {
+    position: fixed;
+    inset: 0;
+
     display: flex;
     flex-direction: column;
-    padding: 40px 24px;
-    gap: 24px;
+    padding: 24px 20px;
     background: #F1EFEB;
-    position: relative;
-    min-width: 670px;
+    overflow: scroll;
+    
+    @include for-tablet-portrait-up {
+      position: relative;
+      min-width: 670px;
+      padding: 40px 24px;
+      gap: 24px;
+      overflow: initial;
+    }
   }
 
   &_close {
-    position: absolute;
-    top: 24px;
-    right: 24px;
+    align-self: flex-end;
+
+    @include for-tablet-portrait-up {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+    }
     
     button {
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
       background-color: transparent;
       border-radius: 50%;
       border: 1px solid rgba(23, 21, 22, 0.10);
@@ -302,41 +333,94 @@
       justify-content: center;
       align-items: center;
       padding: 0;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+      
+      @include for-tablet-portrait-up {
+        width: 60px;
+        height: 60px;
+
+        svg {
+          width: initial;
+          height: initial;
+        }
+      }
     }
+
+    
   }
 
   &_img {
     align-self: center;
+    margin-top: 32px;
+
+    img {
+      @include for-phone-only {
+        width: 100%;
+        height: auto;
+      }
+    }
+    
+    @include for-tablet-portrait-up {
+      margin-top: 0px;
+    }
   }
 
   &_info {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 12px;
+    
+    @include for-tablet-portrait-up {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 0;
+    }
 
     &_left {
-      display: flex;
-      flex-direction: column;
+      display: contents;
+      gap: 12px;
+      
+      @include for-tablet-portrait-up {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
 
       h4 {
         color: $dark-100;
-        font-size: 24px;
+        font-size: 19px;
         font-weight: 400;
         line-height: 125%;
+        grid-area: 1/1/2/2;
+
+        @include for-tablet-portrait-up {
+          @include responsive-font-size(24)
+        }
       }
 
       > div {
         display: flex;
         align-items: center;
         gap: 8px;
+        grid-area: 2/1/3/3;
 
         span {
           color: $dark-75;
 
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 400;
           line-height: 170%;
           letter-spacing: 0.28px;
+
+          @include for-tablet-portrait-up {
+            @include responsive-font-size(14)
+          }
         }
       }
 
@@ -352,18 +436,31 @@
     > p {
       color: $dark-100;
       text-align: right;
-      font-size: 24px;
+      font-size: 19px;
       font-weight: 400;
       line-height: 125%;
       letter-spacing: 0.48px;
+      grid-area: 1/2/2/3;
+
+
+      @include for-tablet-portrait-up {
+        @include responsive-font-size(24)
+      }
     }
   }
 
   &_price {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    gap: 24px;
     border-top: 1px solid rgba(23, 21, 22, 0.10);
     padding-top: 24px;
+    
+    @include for-tablet-portrait-up {
+      flex-direction: row;
+      gap: 0;
+    }
 
     &_left {
       display: flex;
