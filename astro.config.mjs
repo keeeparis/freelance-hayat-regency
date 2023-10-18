@@ -7,8 +7,8 @@ import react from '@astrojs/react';
 export default defineConfig({
   // site: 'https://seesaw.kz/freelance',
   // base: '/freelance',
-  // build: {
-  //   assetsPrefix: '/freelance' // TODO: remove in production
-  // },
+  build: {
+    assetsPrefix: '/freelance' // TODO: remove in production
+  },
   integrations: [react()]
 });

@@ -47,7 +47,7 @@ export const Arch = (props: any) => {
         </div>
       </div> */}
 
-      <Animation />
+      <Animation {...props} />
 
       {/* <div className={cn(styles.arch_2, 'subtitle')}>
         <div className={styles.arch_2_bg}>{props.bgArch2}</div>
@@ -181,7 +181,7 @@ export const Arch = (props: any) => {
   );
 };
 
-const Animation = () => {
+const Animation = (props: any) => {
   useLayoutEffect(() => {
     // gsap
     //   .timeline({
@@ -239,7 +239,8 @@ const Animation = () => {
               className={cn(styles.gridBlock, 'gridBlock')}
               // style={{ backgroundImage: 'url("/assets/arch/pic-top.png")' }}
             >
-              <img src="/assets/arch/pic-top.png" alt="" />
+              {/* <img src="/assets/arch/pic-top.png" alt="" /> */}
+              {props.top}
             </div>
           </div>
           <div className={cn(styles.gridLayer, 'gridLayer')}>
@@ -247,7 +248,8 @@ const Animation = () => {
               className={cn(styles.gridBlock, 'gridBlock')}
               // style={{ backgroundImage: 'url("/assets/arch/pic-left.png")' }}
             >
-              <img src="/assets/arch/pic-left.png" alt="" />
+              {/* <img src="/assets/arch/pic-left.png" alt="" /> */}
+              {props.left}
             </div>
           </div>
           <div className={cn(styles.gridLayer, 'gridLayer', 'centerPiece')}>
@@ -255,7 +257,8 @@ const Animation = () => {
               className={cn(styles.gridBlock, styles.centerBlock, 'gridBlock', 'centerBlock')}
               // style={{ backgroundImage: 'url("/assets/arch/pic-main-center.png")' }}
             >
-              <img src="/assets/arch/pic-main-center.png" alt="" />
+              {/* <img src="/assets/arch/pic-main-center.png" alt="" /> */}
+              {props.mainCenter}
             </div>
           </div>
           <div className={cn(styles.gridLayer, 'gridLayer')}>
@@ -263,7 +266,8 @@ const Animation = () => {
               className={cn(styles.gridBlock, 'gridBlock')}
               // style={{ backgroundImage: 'url("/assets/arch/pic-right.png")' }}
             >
-              <img src="/assets/arch/pic-right.png" alt="" />
+              {/* <img src="/assets/arch/pic-right.png" alt="" /> */}
+              {props.right}
             </div>
           </div>
           <div className={cn(styles.gridLayer, 'gridLayer')}>
@@ -271,7 +275,8 @@ const Animation = () => {
               className={cn(styles.gridBlock, 'gridBlock')}
               // style={{ backgroundImage: 'url("/assets/arch/pic-bottom-left.png")' }}
             >
-              <img src="/assets/arch/pic-bottom-left.png" alt="" />
+              {/* <img src="/assets/arch/pic-bottom-left.png" alt="" /> */}
+              {props.bottomLeft}
             </div>
           </div>
           <div className={cn(styles.gridLayer, 'gridLayer')}>
@@ -279,7 +284,8 @@ const Animation = () => {
               className={cn(styles.gridBlock, 'gridBlock')}
               // style={{ backgroundImage: 'url("/assets/arch/pic-bottom-right.png")' }}
             >
-              <img src="/assets/arch/pic-bottom-right.png" alt="" />
+              {/* <img src="/assets/arch/pic-bottom-right.png" alt="" /> */}
+              {props.bottomRight}
             </div>
           </div>
         </div>

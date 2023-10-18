@@ -83,13 +83,13 @@ function dpr(initial: number, increaseBy = 1.5) {
   <AboutScreen 
     client:only="react"
   >
-    <Image src={ArchTop} slot="top" width={648} height={336} alt="top" quality="max" class="arch-img" />
-    <Image src={ArchLeft} slot="left" width={220} height={280} alt="left" quality="high" class="arch-img" />
-    <Image src={ArchLeftMobile} slot="leftMobile" width={240} height={328} alt="leftMobile" quality="max" class="arch-img" />
-    <Image src={ArchMainCenter} slot="mainCenter" width={576} height={324} alt="mainCenter" quality="max" class="arch-img-main" />
-    <Image src={ArchRight} slot="right" width={220} height={280} alt="right" quality="max" class="arch-img" />
-    <Image src={ArchBottomLeft} slot="bottomLeft" width={198} height={280} alt="bottomLeft" quality="max" class="arch-img" />
-    <Image src={ArchBottomRight} slot="bottomRight" width={546} height={320} alt="bottomRight" quality="max" class="arch-img" />
+    <Image src={ArchTop} slot="top" width={dpr(648)} height={dpr(336)} alt="top" quality="max" class="arch-img" />
+    <Image src={ArchLeft} slot="left" width={dpr(220)} height={dpr(280)} alt="left" quality="high" class="arch-img" />
+    <Image src={ArchLeftMobile} slot="leftMobile" width={dpr(240)} height={dpr(328)} alt="leftMobile" quality="max" class="arch-img" />
+    <Image src={ArchMainCenter} slot="mainCenter" width={dpr(576)} height={dpr(324)} alt="mainCenter" quality="max" class="arch-img-main" />
+    <Image src={ArchRight} slot="right" width={dpr(220)} height={dpr(280)} alt="right" quality="max" class="arch-img" />
+    <Image src={ArchBottomLeft} slot="bottomLeft" width={dpr(198)} height={dpr(280)} alt="bottomLeft" quality="max" class="arch-img" />
+    <Image src={ArchBottomRight} slot="bottomRight" width={dpr(546)} height={dpr(320)} alt="bottomRight" quality="max" class="arch-img" />
     
     <!-- <Image src={ArchMainCenter} slot="bgArch2" quality="max" alt="bg-arch2" /> -->
     
