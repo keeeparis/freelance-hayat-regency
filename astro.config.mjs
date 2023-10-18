@@ -5,8 +5,10 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  build: {
-    assetsPrefix: '/freelance' // TODO: remove in production
-  },
+  // site: 'https://seesaw.kz/freelance',
+  // base: '/freelance',
+  // build: {
+  //   assetsPrefix: '/freelance' // TODO: remove in production
+  // },
   integrations: [react()]
 });

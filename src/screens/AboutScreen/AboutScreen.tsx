@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
+import { gsap } from 'gsap';
+import cn from 'classnames';
 
 import Arch from '@screens/Arch';
 
 import styles from './AboutScreen.module.scss';
 
 export const AboutScreen = (props: any) => {
+  useLayoutEffect(() => {
+    gsap.to('#title span', {
+      once: true,
+      scrollTrigger: {
+        trigger: '#title',
+        start: 'top 600px',
+        scrub: 1,
+        once: true,
+        toggleClass: { className: styles.high, targets: 'span' }
+      }
+    });
+
+    gsap.to('#circles', {
+      once: true,
+      scrollTrigger: {
+        trigger: '#title',
+        start: 'top 600px',
+        once: true,
+        toggleClass: { className: styles.high, targets: '#circles' }
+      }
+    });
+  }, []);
+
   return (
     <>
       <section id="about" className={styles.about}>
-        <div className={styles.about_info}>
+        <div className={styles.about_info} id="info">
           <p className={styles.about_info_subtitle}>о проекте</p>
-          <p className={styles.about_info_title}>
+          <p className={styles.about_info_title} id="title">
             Hayat Regency представляет собой <span> эксклюзивный </span> жилой комплекс, символизирующий{' '}
             <span>премиальный</span> образ жизни в самом <span>сердце</span> города.
           </p>
@@ -49,7 +74,7 @@ export const AboutScreen = (props: any) => {
           </div>
         </div>
 
-        <div className={styles.circles}>
+        <div className={styles.circles} id="circles">
           <div className={styles.circles_lg}></div>
           <div className={styles.circles_md}></div>
           <div className={styles.circles_sm}></div>

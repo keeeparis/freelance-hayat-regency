@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+// import Scrollbar from 'smooth-scrollbar';
 
 import Header from '@components/Header';
 import Button from '@components/Button';

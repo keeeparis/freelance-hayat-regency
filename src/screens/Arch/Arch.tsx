@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import cn from 'classnames';
 
 import Button from '@components/Button';
 
 import styles from './Arch.module.scss';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const Arch = (props: any) => {
+  useLayoutEffect(() => {
+    gsap
+      .timeline({
+        defaults: {
+          ease: 'power1.inOut'
+        },
+        scrollTrigger: {
+          trigger: '.info',
+          start: `top top`,
+          end: '=+100%',
+          scrub: 1
+        }
+      })
+      .to('.stoneball', { y: -50 })
+      .to('.metal', { y: -75 }, 0);
+  }, []);
+
   return (
     <>
-      <div className={styles.arch}>
+      {/* <div className={cn(styles.arch, 'grid-container')} ref={main}>
+        <div className={cn(styles.arch_inner, 'arch-inner', 'grid')}>
+          <div className={cn('grid-layer', styles.arch_inner_block)}>{props.top}</div>
+          <div className={cn('grid-layer', 'center-piece', styles.arch_inner_block)}>{props.mainCenter}</div>
+          <div className={cn('grid-layer', styles.arch_inner_block)}>{props.bottomRight}</div>
+        </div>
         <div className={styles.row_1}>{props.top}</div>
         <div className={styles.row_2}>
           {props.left}
@@ -18,8 +45,11 @@ export const Arch = (props: any) => {
           {props.bottomLeft}
           {props.bottomRight}
         </div>
-      </div>
-      <div className={styles.arch_2}>
+      </div> */}
+
+      <Animation />
+
+      {/* <div className={cn(styles.arch_2, 'subtitle')}>
         <div className={styles.arch_2_bg}>{props.bgArch2}</div>
         <div className={styles.arch_2_info}>
           <div className={styles.arch_2_info_text}>
@@ -42,7 +72,7 @@ export const Arch = (props: any) => {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className={styles.arch_3}>
         <div className={styles.arch_3_bg} id="architechture">
           {props.bgArch3}
@@ -55,7 +85,7 @@ export const Arch = (props: any) => {
             </div>
           </div>
         </div>
-        <div className={styles.arch_3_info}>
+        <div className={cn(styles.arch_3_info, 'info')}>
           <h3 className={styles.arch_3_info_title}>
             Архитектурный дизайн <br />
             Hayat Regency — это симбиоз современных тенденций <br />и классической элегантности.
@@ -129,13 +159,13 @@ export const Arch = (props: any) => {
             </div>
           </div>
 
-          <div className={styles.arch_3_info_text_1}>
+          <div className={cn(styles.arch_3_info_text_1, 'planets')}>
             <p>
               Внешний фасад комплекса украшен натуральным камнем <span>лаймстоун</span>, который придаёт зданию
               элегантность и прочность. Этот материал символизирует красоту природы и её вечность, что позволяет
               комплексу гармонично вписаться в окружающую среду.
             </p>
-            <div className={styles.arch_3_info_text_1_img}>{props.stoneball}</div>
+            <div className={cn(styles.arch_3_info_text_1_img, 'stoneball')}>{props.stoneball}</div>
           </div>
           <div className={styles.arch_3_info_text_2}>
             <p>
@@ -143,7 +173,114 @@ export const Arch = (props: any) => {
               закаленным для максимальной долговечности. Летом, они сохраняют ваши квартиры прохладными, подарив
               приятную свежесть. Зимой же, они сохраняют тепло и уют, оберегая вас от стужи.
             </p>
-            <div className={styles.arch_3_info_text_2_img}>{props.metal}</div>
+            <div className={cn(styles.arch_3_info_text_2_img, 'metal')}>{props.metal}</div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const Animation = () => {
+  useLayoutEffect(() => {
+    // gsap
+    //   .timeline({
+    //     scrollTrigger: {
+    //       trigger: '.grid-container',
+    //       start: 'top top',
+    //       end: () => window.innerHeight * 4,
+    //       scrub: true,
+    //       pin: '.grid',
+    //       anticipatePin: 1
+    //     }
+    //   })
+    //   // .set('.grid-layer:not(.center-piece) img', { autoAlpha: 0 })
+    //   // .to('.grid-layer:not(.center-piece) img', { duration: 0.1, autoAlpha: 1 }, 0.001)
+    //   .from('.grid-layer', {
+    //     scale: 3.3333,
+    //     ease: 'none'
+    //   });
+
+    gsap
+      .timeline({
+        defaults: {
+          ease: 'power1.inOut'
+        },
+        scrollTrigger: {
+          trigger: '.grid-container',
+          start: `top -230px`,
+          end: () => innerHeight * 4.7,
+          scrub: true,
+          pin: '.grid',
+          anticipatePin: 1
+        }
+      })
+      .set('.gridBlock', { autoAlpha: 1 })
+      .set('.gridBlock.centerBlock img', { scale: 1.5 }, 0)
+
+      .to('.grid', { scale: 2.5 }, 0)
+      .to('.gridBlock.centerBlock img', { scale: 1 }, 0)
+      .to(
+        '.gridLayer:not(.centerPiece)',
+        {
+          scale: 0.75,
+          alpha: 0
+        },
+        0
+      );
+  }, []);
+
+  return (
+    <>
+      <div className={cn(styles.gridContainer, 'grid-container')}>
+        <div className={cn(styles.grid, 'grid')}>
+          <div className={cn(styles.gridLayer, 'gridLayer')}>
+            <div
+              className={cn(styles.gridBlock, 'gridBlock')}
+              // style={{ backgroundImage: 'url("/assets/arch/pic-top.png")' }}
+            >
+              <img src="/assets/arch/pic-top.png" alt="" />
+            </div>
+          </div>
+          <div className={cn(styles.gridLayer, 'gridLayer')}>
+            <div
+              className={cn(styles.gridBlock, 'gridBlock')}
+              // style={{ backgroundImage: 'url("/assets/arch/pic-left.png")' }}
+            >
+              <img src="/assets/arch/pic-left.png" alt="" />
+            </div>
+          </div>
+          <div className={cn(styles.gridLayer, 'gridLayer', 'centerPiece')}>
+            <div
+              className={cn(styles.gridBlock, styles.centerBlock, 'gridBlock', 'centerBlock')}
+              // style={{ backgroundImage: 'url("/assets/arch/pic-main-center.png")' }}
+            >
+              <img src="/assets/arch/pic-main-center.png" alt="" />
+            </div>
+          </div>
+          <div className={cn(styles.gridLayer, 'gridLayer')}>
+            <div
+              className={cn(styles.gridBlock, 'gridBlock')}
+              // style={{ backgroundImage: 'url("/assets/arch/pic-right.png")' }}
+            >
+              <img src="/assets/arch/pic-right.png" alt="" />
+            </div>
+          </div>
+          <div className={cn(styles.gridLayer, 'gridLayer')}>
+            <div
+              className={cn(styles.gridBlock, 'gridBlock')}
+              // style={{ backgroundImage: 'url("/assets/arch/pic-bottom-left.png")' }}
+            >
+              <img src="/assets/arch/pic-bottom-left.png" alt="" />
+            </div>
+          </div>
+          <div className={cn(styles.gridLayer, 'gridLayer')}>
+            <div
+              className={cn(styles.gridBlock, 'gridBlock')}
+              // style={{ backgroundImage: 'url("/assets/arch/pic-bottom-right.png")' }}
+            >
+              <img src="/assets/arch/pic-bottom-right.png" alt="" />
+            </div>
           </div>
         </div>
       </div>

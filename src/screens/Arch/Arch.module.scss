@@ -3,18 +3,148 @@
 
 .arch {
   margin-top: 120px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
 
-  z-index: 1;
+  // height: 200vh;
+  
+  // z-index: 1;
+  // position: relative;
+  
+  width: 100vw;
+  height: 400vh;
   position: relative;
+  
+  // @include for-phone-only {
+  //   display: none;
+  // }
+  
+  &_inner {
+    // display: flex;
+    // flex-direction: column;
+    // position: sticky;
+    // top: 0;
+    // left: 0;
 
-  @include for-phone-only {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+    width: 70vw;
+    height: 60vw;
+    margin: 0 calc(100vw / 20 * 3);
+
+    &_block {
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+      transform-origin: 44.951% 50%;
+
+      img {
+
+      }
+    }
   }
 }
+
+.gridContainer {
+  // width: 100vw;
+  height: 400vh;
+  position: relative;
+  overflow: hidden;
+}
+.grid {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 72vw;
+  height: 80vw;
+  margin: 0 calc(100vw / 20 * 2.75);
+  position: absolute;
+  overflow: hidden;
+}
+.gridLayer {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  will-change: transform;
+  transform-origin: 44.951% 50%;
+}
+
+.gridLayer:nth-child(1) .gridBlock {
+  top: 3vw;
+  left: 12vw;
+  width: 46vw;
+  height: 25vw;
+}
+.gridLayer:nth-child(2) .gridBlock {
+  top: 34vw;
+  left: 0;
+  width: 14vw;
+  height: 19vw;
+  // height: 19vh;
+}
+.gridLayer:nth-child(3) {
+  z-index: 1;
+}
+.gridLayer:nth-child(3) .gridBlock {
+  top: 30vw;
+  left: 16vw;
+  width: 42vw;
+  height: 23vw;
+  // height: 23vh;
+}
+.gridLayer:nth-child(4) .gridBlock {
+  top: 34vw;
+  left: 60vw;
+  width: 14vw;
+  height: 19vw;
+  // height: 19vh;
+}
+.gridLayer:nth-child(5) .gridBlock {
+  top: 55vw;
+  left: 8vw;
+  width: 15vw;
+  height: 20vw;
+  // height: 20vh;
+}
+.gridLayer:nth-child(6) .gridBlock {
+  top: 55vw;
+  left: 25vw;
+  width: 40vw;
+  height: 22vw;
+  // height: 22vh;
+}
+.gridBlock {
+  opacity: 0;
+  background-size: cover;
+  background-color: darkgray;
+
+  display: block;
+  position: relative;
+  overflow: hidden;
+
+  // &.centerBlock {
+  //   position: relative;
+  // }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
 
 .row {
   &_1 {
@@ -47,17 +177,28 @@
     margin-top: 120px;
   }
 
-  &_bg > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    inset: 0;
+  // background: url('/assets/arch/pic-main-center.png');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  
+  &_bg {
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
   }
 
   &_info {
-    position: relative;
+    // position: relative;
+    // position: absolute;
     z-index: 1;
+    // bottom: 0;
+    // left: 20%;
+    width: 100%;
     flex: 1;
     margin-inline: 20px;
     padding-bottom: 32px;
@@ -83,9 +224,10 @@
         font-weight: 400;
         line-height: 171%;
         letter-spacing: 0.28px;
-
+        
         @include for-tablet-portrait-up {
-          @include responsive-font-size(14)
+          font-size: 14px;
+          // @include responsive-font-size(14)
         }
       }
       &_title {
@@ -96,8 +238,10 @@
         word-break: break-word;
         hyphens: auto;
 
+        
         @include for-tablet-portrait-up {
-          @include responsive-font-size(84)
+          font-size: 84px;
+          // @include responsive-font-size(84)
         }
       }
     }
