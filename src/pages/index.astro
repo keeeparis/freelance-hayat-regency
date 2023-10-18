@@ -4,6 +4,7 @@ import { getImage } from 'astro/assets';
 
 import Layout from '../layouts/Layout.astro';
 import Footer from '@components/Footer';
+import Scroll from '@components/Scroll';
 import StartScreen from '@screens/StartScreen';
 import AboutScreen from '@screens/AboutScreen';
 import Exterior from '@screens/Exterior';
@@ -67,6 +68,7 @@ function dpr(initial: number, increaseBy = 1.5) {
 ---
 
 <Layout>
+  <Scroll client:only="react" />
   <StartScreen client:load>
     <!-- <Image src={optimizedBackground.src} slot="background" alt="background iamge" />   -->
     <!-- <img src={optimizedBackground2x.src} slot="background" alt="background image" srcset={`
@@ -78,16 +80,18 @@ function dpr(initial: number, increaseBy = 1.5) {
     <Image src={SidebarImg} slot="sidebarImage" width={680} height={368} alt="sidebar img" />
   </StartScreen>
   
-  <AboutScreen>
-    <Image src={ArchTop} slot="top" width={648} height={336} alt="top" quality="max" />
-    <Image src={ArchLeft} slot="left" width={220} height={280} alt="left" quality="high" />
-    <Image src={ArchLeftMobile} slot="leftMobile" width={240} height={328} alt="leftMobile" quality="max" />
-    <Image src={ArchMainCenter} slot="mainCenter" width={576} height={324} alt="mainCenter" quality="max" />
-    <Image src={ArchRight} slot="right" width={220} height={280} alt="right" quality="max" />
-    <Image src={ArchBottomLeft} slot="bottomLeft" width={198} height={280} alt="bottomLeft" quality="max" />
-    <Image src={ArchBottomRight} slot="bottomRight" width={546} height={320} alt="bottomRight" quality="max" />
+  <AboutScreen 
+    client:only="react"
+  >
+    <Image src={ArchTop} slot="top" width={648} height={336} alt="top" quality="max" class="arch-img" />
+    <Image src={ArchLeft} slot="left" width={220} height={280} alt="left" quality="high" class="arch-img" />
+    <Image src={ArchLeftMobile} slot="leftMobile" width={240} height={328} alt="leftMobile" quality="max" class="arch-img" />
+    <Image src={ArchMainCenter} slot="mainCenter" width={576} height={324} alt="mainCenter" quality="max" class="arch-img-main" />
+    <Image src={ArchRight} slot="right" width={220} height={280} alt="right" quality="max" class="arch-img" />
+    <Image src={ArchBottomLeft} slot="bottomLeft" width={198} height={280} alt="bottomLeft" quality="max" class="arch-img" />
+    <Image src={ArchBottomRight} slot="bottomRight" width={546} height={320} alt="bottomRight" quality="max" class="arch-img" />
     
-    <Image src={ArchMainCenter} slot="bgArch2" quality="max" alt="bg-arch2" />
+    <!-- <Image src={ArchMainCenter} slot="bgArch2" quality="max" alt="bg-arch2" /> -->
     
     <Image src={ArchBg} slot="bgArch3" width={816} height={810} alt="bg-arch3" />
     

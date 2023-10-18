@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
 
 import { Navigation, Pagination } from 'swiper/modules';
 
@@ -44,12 +45,31 @@ const Slider = (props: any) => {
     props.slider8
   ];
 
+  const [activeIndex, setActiveIndex] = useState(1);
+
+  const currentTransitionSpeed = useRef(0);
+
+  function getTransitionSpeed() {
+    const transitionSpeed = currentTransitionSpeed.current;
+    currentTransitionSpeed.current = 0;
+    return transitionSpeed;
+  }
+
+  function getDirection(animationProgress: number) {
+    if (animationProgress === 0) {
+      return 'NONE';
+    } else if (animationProgress > 0) {
+      return 'NEXT';
+    } else {
+      return 'BACK';
+    }
+  }
+
   return (
     <section className={styles.slider}>
       <Swiper
         modules={[Navigation, Pagination]}
         slidesPerView="auto"
-        // navigation={false}
         pagination={{
           bulletClass: styles.slider_pagination_bullet,
           bulletActiveClass: styles.slider_pagination_bullet_active,
@@ -58,13 +78,69 @@ const Slider = (props: any) => {
         }}
         centeredSlides={true}
         spaceBetween={8}
-        loop={true}
+        // loop={true}
         breakpoints={{
           960: {
             // navigation: true,
             pagination: false,
             spaceBetween: 40
           }
+        }}
+        onSlideChange={swiper => {
+          setActiveIndex(swiper.realIndex + 1);
+        }}
+        speed={2200}
+        watchSlidesProgress
+        virtualTranslate
+        onSetTransition={(swiper, transition) => {
+          currentTransitionSpeed.current = transition;
+        }}
+        onSetTranslate={(swiper, tranlate) => {
+          const durationInSeconds = getTransitionSpeed() / 1000;
+          const slides = Object.values(swiper.slides);
+
+          const originIndex = swiper.activeIndex;
+          // @ts-ignore
+          const animationProgress = slides[originIndex].progress;
+          const direction = getDirection(animationProgress);
+
+          slides.map((slide, idx, arr) => {
+            const g1 = gsap.timeline({
+              defaults: { ease: 'power2.out', duration: durationInSeconds, translateX: `${swiper.translate}` }
+            });
+
+            g1.to(slide, { translateX: `${swiper.translate}` }, 0);
+
+            if (direction === 'NEXT') {
+              g1.to(
+                slide,
+                {
+                  skewX: '-15deg'
+                },
+                0
+              ).to(
+                slide,
+                {
+                  skewX: 0
+                },
+                '<25%'
+              );
+            } else if (direction === 'BACK') {
+              g1.to(
+                slide,
+                {
+                  skewX: '15deg'
+                },
+                0
+              ).to(
+                slide,
+                {
+                  skewX: 0
+                },
+                '<25%'
+              );
+            }
+          });
         }}
       >
         {slides.map((slide, idx) => (
@@ -74,7 +150,7 @@ const Slider = (props: any) => {
         ))}
 
         <Prev />
-        <Next />
+        <Next total={slides.length} />
       </Swiper>
     </section>
   );
@@ -84,11 +160,15 @@ const Prev = () => {
   const swiper = useSwiper();
 
   return (
-    <div className={styles.slider_button_prev} onClick={() => swiper.slidePrev()}>
+    <div
+      className={styles.slider_button_prev}
+      data-disabled={swiper.activeIndex === 0}
+      onClick={() => swiper.slidePrev()}
+    >
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
         <path
           d="M26.6667 16H5.33337M5.33337 16L13.3334 24M5.33337 16L13.3334 8"
-          stroke="#171516"
+          stroke="currentColor"
           strokeWidth="1.4"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -98,17 +178,21 @@ const Prev = () => {
   );
 };
 
-const Next = () => {
+const Next = (props: any) => {
   const swiper = useSwiper();
 
   return (
-    <div className={styles.slider_button_next} onClick={() => swiper.slideNext()}>
+    <div
+      className={styles.slider_button_next}
+      data-disabled={props.total === swiper.activeIndex + 1}
+      onClick={() => swiper.slideNext()}
+    >
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="icon-arrow-narrow-right">
           <path
             id="Icon"
             d="M5.33325 16H26.6666M26.6666 16L18.6666 8M26.6666 16L18.6666 24"
-            stroke="#171516"
+            stroke="currentColor"
             strokeWidth="1.4"
             strokeLinecap="round"
             strokeLinejoin="round"
